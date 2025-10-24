@@ -1,0 +1,19 @@
+{
+  "Serilog": {
+    "Using": [ "Serilog.Sinks.File" ],
+    "MinimumLevel": "Information",
+    "WriteTo": [
+      {
+        "Name": "File",
+        "Args": {
+          "path": "Logs/log-.txt",
+          "fileSizeLimitBytes": 4096,
+          "rollOnFileSizeLimit": true,
+          "rollingInterval": "Day",
+          "retainedFileCountLimit": 60
+
+        }
+      }
+    ]
+  }
+}
