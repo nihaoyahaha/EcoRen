@@ -138,6 +138,13 @@ namespace EcoReport
 						return false;
 					}
 
+					var templateSheet = workbook.Worksheet("部材別");
+					if (templateSheet == null)
+					{
+						GlobalLog.Warning("ターゲットテンプレート「部材別」は存在しません!");
+						return false;
+					}
+
 					List<EcoRenInputReport> list = CreateLegalEcoRenInputList();
 					List<List<EcoRenInputReport>> grouped = list
 						.Select((item, index) => new { item, index })
@@ -145,11 +152,12 @@ namespace EcoReport
 						.Select(x => x.Select(o => o.item).ToList())
 						.ToList();
 
-					var targetSheet = workbook.AddWorksheet(0);
-					targetSheet.Name = "帳票";
+					var targetSheet = templateSheet.CopyTo("帳票");
+					targetSheet.Clear(XLClearOptions.Contents | XLClearOptions.AllFormats);
 
-					var templateSheet = workbook.Worksheet("template");
 					var sourceCell = templateSheet.Range("A1:B1");
+					var constructionNameCellHeight = templateSheet.Row(1).Height;
+					var tableGapHeight = templateSheet.Row(14).Height;
 					var sourceRange = templateSheet.Range("A2:Q13");
 					int groupBegin = 1 + _topRows;
 					int pageNum = 0;
@@ -158,7 +166,11 @@ namespace EcoReport
 						sourceCell.CopyTo(targetSheet.Cell($"A{groupBegin}"));
 						//工事名称
 						targetSheet.Cell($"B{groupBegin}").Value = ConstructionName;
+						targetSheet.Row(groupBegin).Height = constructionNameCellHeight;
+
 						//ページ数
+						var cell = targetSheet.Cell($"Q{groupBegin}");
+						cell.Style.NumberFormat.Format = "@";
 						targetSheet.Cell($"Q{groupBegin}").Value = $"{pageNum + 1}/{grouped.Count}";
 
 						int index = 0;
@@ -172,7 +184,19 @@ namespace EcoReport
 							   : rowBegin + index * (_tableRowSpan + _rowGap);
 
 							sourceRange.CopyTo(targetSheet.Cell($"A{startRow}"));
+
+							for (int i = 1; i <= sourceRange.RowCount(); i++)
+							{
+								int sourceRowNum = sourceRange.FirstRow().RowNumber() + i - 1;
+								int targetRowNum = startRow + i - 1;
+
+								var sourceRow = templateSheet.Row(sourceRowNum);
+								var targetRow = targetSheet.Row(targetRowNum);
+								targetRow.Height = sourceRow.Height;
+							}
+
 							FillTableWithData(targetSheet, obj, startRow);
+							targetSheet.Row(startRow + _tableRowSpan).Height = tableGapHeight;
 							index++;
 						}					
 						groupBegin = startRow + _tableRowSpan + _groupGap;
@@ -180,8 +204,9 @@ namespace EcoReport
 						targetSheet.PageSetup.AddHorizontalPageBreak(groupBegin-1);
 						pageNum++;				
 					}
-					workbook.Worksheets.Delete("template");
-					workbook.Save();
+					targetSheet.PageSetup.PrintAreas.Add($"A1:Q{groupBegin - 1}");
+					workbook.Worksheets.Delete("部材別");
+					workbook.SaveAs(targetPath);
 					GlobalLog.Information($"{DateTime.Now.ToString()}:エクスポート成功!");
 				}
 				return true;
