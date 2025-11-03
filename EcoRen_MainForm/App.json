@@ -1,0 +1,9 @@
+{
+	"TemplatePath": "template.xlsx",
+	"LogMinimumLevel": "Information",
+	"LogPath": "Logs/log-.txt",
+	"LogFileSizeLimitBytes": 4096,
+	"LogRollOnFileSizeLimit": true,
+	"LogRollingInterval": "Day",
+	"LogRetainedFileCountLimit": 60
+}

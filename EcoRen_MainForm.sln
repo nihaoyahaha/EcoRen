@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35818.85 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcoRen_MainForm", "EcoRen_MainForm\EcoRen_MainForm.csproj", "{83A9E387-5532-4705-90A5-D988A850C7FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcoRecDatas", "EcoRecDatas\EcoRecDatas.csproj", "{C43EA28F-2C0E-4A54-B5FD-56AE3D12B162}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcoReport", "EcoReport\EcoReport.csproj", "{BC9A535E-74BE-480A-B91B-DDC0FD12A7B7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		DLL|Any CPU = DLL|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{83A9E387-5532-4705-90A5-D988A850C7FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83A9E387-5532-4705-90A5-D988A850C7FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83A9E387-5532-4705-90A5-D988A850C7FD}.DLL|Any CPU.ActiveCfg = Debug|Any CPU
+		{83A9E387-5532-4705-90A5-D988A850C7FD}.DLL|Any CPU.Build.0 = Debug|Any CPU
+		{83A9E387-5532-4705-90A5-D988A850C7FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83A9E387-5532-4705-90A5-D988A850C7FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C43EA28F-2C0E-4A54-B5FD-56AE3D12B162}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C43EA28F-2C0E-4A54-B5FD-56AE3D12B162}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C43EA28F-2C0E-4A54-B5FD-56AE3D12B162}.DLL|Any CPU.ActiveCfg = Debug|Any CPU
+		{C43EA28F-2C0E-4A54-B5FD-56AE3D12B162}.DLL|Any CPU.Build.0 = Debug|Any CPU
+		{C43EA28F-2C0E-4A54-B5FD-56AE3D12B162}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C43EA28F-2C0E-4A54-B5FD-56AE3D12B162}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC9A535E-74BE-480A-B91B-DDC0FD12A7B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC9A535E-74BE-480A-B91B-DDC0FD12A7B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC9A535E-74BE-480A-B91B-DDC0FD12A7B7}.DLL|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC9A535E-74BE-480A-B91B-DDC0FD12A7B7}.DLL|Any CPU.Build.0 = Debug|Any CPU
+		{BC9A535E-74BE-480A-B91B-DDC0FD12A7B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC9A535E-74BE-480A-B91B-DDC0FD12A7B7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AC01F34F-D6BD-4838-B242-682D2542CD69}
+	EndGlobalSection
+EndGlobal
